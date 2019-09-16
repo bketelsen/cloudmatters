@@ -8,7 +8,7 @@ function createUser() {
 	return {
         subscribe,
         set: (u) => set(u),
-        current: () => {
+    current: () => {
             if (typeof(Storage) !== "undefined") {
                return JSON.parse(window.localStorage.getItem('gotrue.user'));;
             }
