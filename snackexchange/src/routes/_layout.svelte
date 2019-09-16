@@ -20,6 +20,10 @@
 			user.set(u);
 			Identity.close();
 		});
+		Identity.on('logout', () => {
+			user.set({});
+			Identity.close();
+		})
 
 	});
 </script>
