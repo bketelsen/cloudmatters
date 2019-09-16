@@ -2,7 +2,7 @@
   base = "snackexchange"
   command = "make build"
   functions = "functions"
-  publish = "__sapper__/export"
+  publish = "snackexchange/__sapper__/export"
 [build.environment]
   # Change this path with the path to your repository
   GO_IMPORT_PATH = "github.com/netlify/aws-lambda-go-example"
