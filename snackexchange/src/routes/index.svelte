@@ -41,11 +41,12 @@
 	import {user} from '../stores/user.js';
 
 	let name = "You Crazy Person"
-
+	let loggedin = false;
 
 	const unsubscribe = user.subscribe(value => {
-		name = value.email;
+		loggedin = (user.current()!=null);
 	});
+
 	
 
 </script>
@@ -54,7 +55,7 @@
 
 <figure>
 	<img alt='Borat' src='great-success.png'>
-	<figcaption>HIGH FIVE {name}! </figcaption>
+	<figcaption>HIGH FIVE {loggedin}! </figcaption>
 </figure>
 
 <p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>

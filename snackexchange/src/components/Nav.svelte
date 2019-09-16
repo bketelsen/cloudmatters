@@ -1,9 +1,18 @@
 <script>
+
+	import {user} from '../stores/user.js';
 	export let segment;
 	export let Identity;
-
+	let loggedin;
+	let name;
+	const unsubscribe = user.subscribe(value => {
+		loggedin = (user.current()!=null);
+	});
 	function showLogin() {
 		Identity.open();
+	}
+	function logout() {
+		Identity.logout();
 	}
 </script>
 
@@ -61,6 +70,10 @@
 		<!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
 		     the blog data when we hover over the link or tap it on a touchscreen -->
 		<li><a rel=prefetch class='{segment === "blog" ? "selected" : ""}' href='blog'>blog</a></li>
+		{#if loggedin}
+		<li><a href="#" on:click={logout}>logout</a></li>
+		{:else}
 		<li><a href="#" on:click={showLogin}>login</a></li>
+		{/if}
 	</ul>
 </nav>

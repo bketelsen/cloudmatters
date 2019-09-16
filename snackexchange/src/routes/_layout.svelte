@@ -4,16 +4,21 @@
 	export let segment;
 
 	import { onMount } from 'svelte';
-
+	let name = "You Crazy Person";
 	let Identity;
 
+	let loggedin = false;
+
+	const unsubscribe = user.subscribe(value => {
+		loggedin = (user.current()!=null);
+	});
 	onMount(async () => {
 		const module = await import('netlify-identity-widget');
 		Identity = module.default;
 		Identity.init();
 		Identity.on('login', u => {
 			user.set(u);
-			console.log(u);
+			Identity.close();
 		});
 
 	});
@@ -33,5 +38,6 @@
 <Nav {segment} {Identity}/>
 
 <main>
+<span> {loggedin}</span>
 	<slot></slot>
 </main>
