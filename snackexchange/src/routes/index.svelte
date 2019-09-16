@@ -37,13 +37,24 @@
 </svelte:head>
 
 <script>
+
+	import {user} from '../stores/user.js';
+
+	let name = "You Crazy Person"
+
+
+	const unsubscribe = user.subscribe(value => {
+		name = value.email;
+	});
+	
+
 </script>
 
 <h1>Great success!</h1>
 
 <figure>
 	<img alt='Borat' src='great-success.png'>
-	<figcaption>HIGH FIVE!</figcaption>
+	<figcaption>HIGH FIVE {name}! </figcaption>
 </figure>
 
 <p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>

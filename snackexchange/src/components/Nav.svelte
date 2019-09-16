@@ -1,5 +1,10 @@
 <script>
 	export let segment;
+	export let Identity;
+
+	function showLogin() {
+		Identity.open();
+	}
 </script>
 
 <style>
@@ -56,5 +61,6 @@
 		<!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
 		     the blog data when we hover over the link or tap it on a touchscreen -->
 		<li><a rel=prefetch class='{segment === "blog" ? "selected" : ""}' href='blog'>blog</a></li>
+		<li><a href="#" on:click={showLogin}>login</a></li>
 	</ul>
 </nav>
