@@ -21,7 +21,7 @@
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
       headers: {
 		"Content-Type": "application/json",
-        "Authorization": "bearer " + user.current().token
+        "Authorization": "bearer " + user.current().token.access_token
       },
       redirect: "follow", // manual, *follow, error
       referrer: "no-referrer", // no-referrer, *client
